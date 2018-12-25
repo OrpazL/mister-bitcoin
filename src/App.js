@@ -12,7 +12,7 @@ import ChartsPage from './pages/ChartsPage/ChartsPage';
 import NavBar from './components/NavBar/NavBar';
 
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect

@@ -1,0 +1,32 @@
+.contact-page-container {
+    max-width: 96%;
+    margin: 0 auto;
+    .list-container {
+        list-style: none;
+        // color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .add-btn {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        height: 44px;
+        width: 44px;
+        background-color: royalblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: white;
+        text-decoration: none;
+
+        &:hover{
+            background-color: darken(royalblue,15%);
+        }
+    }
+}

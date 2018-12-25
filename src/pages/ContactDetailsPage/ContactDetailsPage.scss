@@ -1,0 +1,34 @@
+.contact-details-container {
+    color: white;
+    // text-align: left;
+    img {
+        background-color: royalblue;
+        border-radius: 30%;
+        max-width: 100px;
+    }
+    
+    .contact-data {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .contact-content {
+            text-align: left;
+        }
+    }
+
+    .contact-actions {
+        button {
+            & , a {
+                color: white;
+                text-decoration: none;
+            }
+            background-color: royalblue;
+            padding: 5px;
+            border-radius: 50%;
+            margin: 5px;
+            height: 44px;
+            width: 44px;
+            border-color: lighten(royalblue , 15%);
+        }
+    }
+}

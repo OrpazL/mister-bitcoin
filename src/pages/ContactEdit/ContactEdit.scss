@@ -1,0 +1,36 @@
+.contact-edit-container {
+    form {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+        label {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            span {
+                width: 100px;
+                text-align: left;
+            }
+            input {
+                flex-grow: 1;
+                border-radius: 5px;
+                padding: 5px;
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            button {
+                padding: 5px;
+                border-radius: 3px;
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+}

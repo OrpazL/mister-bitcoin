@@ -1,0 +1,29 @@
+.contact-preview-container {
+    padding: 5px;
+    margin: 5px auto;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 90vw;
+    display: flex;
+    text-align: left;
+    // justify-content: space-between;
+    color: black;
+    font-weight: bold;
+    .contact-phone {
+        opacity: .7;
+        font-size: .8em;
+    }
+    img {
+        margin-right: 10px;
+        // width: 30%;
+        height: 50px;
+        background-color:  cornflowerblue;
+        border-radius: 50%;
+    }
+
+    &:hover {
+        background-color: darken(#fff,15%);
+        cursor: pointer;
+    }
+
+}

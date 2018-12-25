@@ -1,0 +1,23 @@
+.transfer-fund-container {
+    background-color: darken(royalblue,20%);
+    border-radius: 10px;
+    padding: 10px;
+    h4 {
+        margin: 0;
+    }
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto;
+    input {
+        background-color: transparent;
+        border: 0;
+        box-shadow:0 -1px 0 0 inset rgba(0,0,0,.3);
+    }
+    button {
+        margin-left: 5px;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+}

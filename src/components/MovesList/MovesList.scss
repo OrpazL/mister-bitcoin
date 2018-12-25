@@ -1,0 +1,16 @@
+.moves-list-container {
+    background-color: darken(royalblue,30%);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    .move-item {
+        text-align: left;
+        background-color: darken(navy,10%);
+        border-radius: 10px;
+        margin: 5px;
+        padding: 10px;
+        span {
+            font-weight: bold;
+        }
+    }
+}

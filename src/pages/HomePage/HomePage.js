@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import './HomePage.scss';
+import { observer, inject } from 'mobx-react';
 
 import BitcoinService from '../../services/BitcoinService.js';
 import MovesList from '../../components/MovesList/MovesList';
-class HomePage extends Component {
+import { observable } from 'mobx';
 
-    state = {
-        user: {},
-        coinsInBTC: 0,
-    }
+@inject('store')
+@observer
+class HomePage extends Component {
+    
+    store = this.props.store;
+    userStore = this.store.UserStore;
+
+    @observable
+    user = this.userStore.user;
+
+    @observable
+    coinsInBTC = 0;
 
     async componentDidMount() {
-        this.setState({user: this.props.user});
-        await BitcoinService.getBitcoinRate()
-            .then(rate => {
-                this.setState({coinsInBTC: (this.state.user.coins || 0) * rate})
-            });
+        const rate = await BitcoinService.getBitcoinRate()
+        this.coinsInBTC = this.user.coins * rate;
     }
 
     render() {
-        const {user , coinsInBTC} = this.state;
+        const {user , coinsInBTC} = this;
         return (
             <section className="home-page-container">
                 <h1>Hello {user.name}</h1>

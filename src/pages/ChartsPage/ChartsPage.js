@@ -3,7 +3,9 @@ import './ChartsPage.scss';
 
 import { Sparklines ,SparklinesLine  } from 'react-sparklines';
 import BitcoinService from '../../services/BitcoinService';
+import {inject} from 'mobx-react';
 
+@inject('store')
 class ChartsPage extends Component {
 
     state = {

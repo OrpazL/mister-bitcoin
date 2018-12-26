@@ -1,21 +1,28 @@
 import React , {Component} from 'react';
 import './SignupPage.scss';
 
-import UserService from '../../services/UserService';
+import { inject } from 'mobx-react';
 
+@inject('store')
 class SignupPage extends Component {
 
-    state = {
-        user: {
-            name: null,
-        }
+    store = this.props.store;
+    userStore = this.store.UserStore;
+
+    user = {
+        name: null,
     }
 
     signUp = (ev) => {
         ev.preventDefault();
-        UserService.saveUser(this.state.user);
-        const {history} = this.props;
-        history.push('/');
+        this.userStore.saveUser(this.user);
+        this.props.history.push('/');
+    }
+    
+    componentDidMount() {
+        if (this.userStore.user) {
+            this.props.history.push('/');
+        }
     }
 
     render() {
@@ -25,7 +32,7 @@ class SignupPage extends Component {
                     <div>
                         <label>
                             <h3>Please enter your name:</h3>
-                            <input type="text" onChange={(ev)=>this.setState({user: {...this.state.user , name: ev.target.value}})} />
+                            <input type="text" onChange={(ev)=>this.user.name = ev.target.value} />
                         </label>
                     </div>
                     <button>Sign up</button>

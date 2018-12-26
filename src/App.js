@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.scss';
 
 import HomePage from './pages/HomePage/HomePage.js';
-import UserService from './services/UserService';
 import ContactsPage from './pages/ContactPage/ContactPage';
 import ContactDetails from './pages/ContactDetailsPage/ContactDetailsPage';
 import ContactEdit from './pages/ContactEdit/ContactEdit';
 import SignupPage from './pages/SignupPage/SignupPage';
 import ChartsPage from './pages/ChartsPage/ChartsPage';
 import NavBar from './components/NavBar/NavBar';
+
+import { inject } from 'mobx-react';
 
 import {
   HashRouter as Router,
@@ -23,18 +24,19 @@ const PrivateRoute = props => {
   return props.user ? <Route {...props} /> : <Redirect to="/signup" />;
 };
 
-
+@inject('store')
 class App extends Component {
+
+  store = this.props.store;
+  userStore = this.store.UserStore;
   
-  state = {
-    currUser: UserService.getUser()
-  }
-  
+  currUser = this.userStore.user;
+
   render() {
     return (
       <Router>
         <div className="App">
-          {this.state.currUser && <NavBar/>}
+          {this.currUser && <NavBar/>}
 
           <div className="App-bg">
             <img src={logo} className="App-logo" alt="logo" />
@@ -46,15 +48,15 @@ class App extends Component {
             classNames="fade"
           >
             <Switch>
-              <PrivateRoute user={this.state.currUser} path="/" exact 
+              <PrivateRoute user={this.currUser} path="/" exact 
                     render={() => {
-                      return <HomePage user={this.state.currUser} />;
+                      return <HomePage user={this.currUser} />;
                     }}
               />
-              <PrivateRoute user={this.state.currUser} path="/stats" exact component={ChartsPage} />
-              <PrivateRoute user={this.state.currUser} path="/contact" exact component={ContactsPage} />
-              <PrivateRoute user={this.state.currUser} path="/contact/edit/:contactId?" exact component={ContactEdit} />
-              <PrivateRoute user={this.state.currUser} path="/contact/:contactId" exact component={ContactDetails} />
+              <PrivateRoute user={this.currUser} path="/stats" exact component={ChartsPage} />
+              <PrivateRoute user={this.currUser} path="/contact" exact component={ContactsPage} />
+              <PrivateRoute user={this.currUser} path="/contact/edit/:contactId?" exact component={ContactEdit} />
+              <PrivateRoute user={this.currUser} path="/contact/:contactId" exact component={ContactDetails} />
               <Route path="/signup" exact component={SignupPage} />
             </Switch>
           </CSSTransition>

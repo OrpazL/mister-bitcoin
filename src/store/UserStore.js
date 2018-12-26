@@ -1,16 +1,22 @@
 import UserService from '../services/UserService';
-import { observable, action , computed } from 'mobx';
+import { observable, action } from 'mobx';
 
 export default class UserStore {
-    @observable
+    @observable 
     user = {};
 
     constructor(rootStore) {
         this.rootStore = rootStore;
+        this.loudUser();
     }
 
     @action	
     loudUser() {
         this.user = UserService.getUser();
+    }
+
+    @action
+    saveUser(user) {
+        UserService.saveUser(user);
     }
 }
